@@ -12,7 +12,16 @@ import connectDB from "./db/index.js";
 dotenv.config({
     path : './env'
 })
-connectDB();
+connectDB()//async function send prommise so handdling that only
+.then(() =>{
+    app.listen(process.env.PORT || 8000 , ()=>{
+        console.log(`server is running at : ` , process.env.PORT );
+    })
+})
+.catch((err) =>{
+    console.log("MONGO DB CONNECTION FAIL :" , err);
+    
+})
 // const app = express();
 // //dont ever connect database in single line use try catch block
 // ; 
